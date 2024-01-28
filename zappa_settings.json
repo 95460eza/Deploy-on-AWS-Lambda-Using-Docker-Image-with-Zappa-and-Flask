@@ -1,0 +1,30 @@
+{ 
+  # Choose the name you want to call when deploying: (Ex: zappa deploy dev)
+  "dev": {
+
+            # Provide the URI of Docker Image stored on AWS ECR
+            "docker_image": "095893807368.dkr.ecr.eu-north-1.amazonaws.com/repository-for-docker-images:zappaflask1",
+
+            # Provide the EXISTING AWS S3 bucket to be used during deployment
+            "s3_bucket": "bucket-for-webcontainerflask",
+
+            # app_function below POINTS RELATIVE to the location of the "zappa_settings.json" file to the "handler function" (serves as the entry point). The format is:
+            # (FOLDER NAME with the App Definition Code (if not located in the same one as zappa_settings.json file).(.py FILE NAME with the App Definition Code).(HANDLER FUNCTION NAME)
+            # Ex: Here 1st "app" is a FOLDER, 2nd "app" is for app.py and "lambda_handler" is the function DEFINED INSIDE "app.py"
+            "app_function": "app.app.lambda_handler",
+
+            # app_module POINTS RELATIVE to the location of the "zappa_settings.json" file to the module (i.e the .py file) that contains the Flask object
+            "app_module": "app.app"
+
+            # Both "app_function" and "handler" BELOW serve the SAME purpose of specifying the Handler Function (the entry point for your application). "app_function" is better when the handler
+            # function is NESTED within your code structure while "handler" is more straightforward. Choose the one that fits better with your project organization and preferences.
+            #"handler": "app.app.lambda_handler"
+
+            #"runtime": "python3.8",
+
+            #"environment_variables": {
+            #  "YOUR_ENV_VARIABLE": "value"
+
+         #}
+  }
+}
