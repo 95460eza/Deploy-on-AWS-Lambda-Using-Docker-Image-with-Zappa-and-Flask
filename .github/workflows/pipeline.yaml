@@ -59,14 +59,13 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          #python-version: '3.11'
           python-version: '3.9'
 
          # Zappa requires an ACTIVE virtual environment is CREATED
       - name: Create and activate virtual environment
         run: |
           python -m venv venv
-          source venv/bin/activate
+          #source venv/bin/activate
 
          # Zappa requires ALL the libraries from "requirements.txt" be INSTALLED HERE
       - name: Deploy with Zappa to AWS Lambda 
@@ -74,7 +73,7 @@ jobs:
           source venv/bin/activate  # Activate the virtual environment
           pip install --upgrade pip
           pip install flask
-          pip install werkzeug
+          #pip install werkzeug
           pip install zappa
           zappa deploy dev
           #zappa deploy dev && zappa tail dev
