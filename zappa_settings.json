@@ -3,7 +3,7 @@
   "dev": {
 
             # Provide the URI of Docker Image stored on AWS ECR
-            "docker_image": "095893807368.dkr.ecr.eu-north-1.amazonaws.com/repository-for-docker-images:zappaflask1",
+            "docker_image": "095893807368.dkr.ecr.eu-north-1.amazonaws.com/repository-for-docker-images:zappaflask",
 
             # Provide the EXISTING AWS S3 bucket to be used during deployment
             "s3_bucket": "bucket-for-webcontainerflask",

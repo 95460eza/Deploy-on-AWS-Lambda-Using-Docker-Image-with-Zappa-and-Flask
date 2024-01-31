@@ -31,8 +31,8 @@ jobs:
       - name: Build and Push Docker Image
         run: |
           # NOTE: CHANGE below "repository-for-docker-images:mangum10" with BOTH the ACTUAL AWS ECR repository name that will containt the Docker Image AND the ACTUAL Image name
-          docker build -t ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_DEFAULT_REGION }}.amazonaws.com/repository-for-docker-images:zappaflask1 .
-          docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_DEFAULT_REGION }}.amazonaws.com/repository-for-docker-images:zappaflask1
+          docker build -t ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_DEFAULT_REGION }}.amazonaws.com/repository-for-docker-images:zappaflask .
+          docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_DEFAULT_REGION }}.amazonaws.com/repository-for-docker-images:zappaflask
 
 #name: Build and Deploy Lambda Function
   build-and-deploy:
@@ -65,7 +65,6 @@ jobs:
       - name: Create and activate virtual environment
         run: |
           python -m venv venv
-          #source venv/bin/activate
 
          # Zappa requires ALL the libraries from "requirements.txt" be INSTALLED HERE
       - name: Deploy with Zappa to AWS Lambda 
@@ -73,7 +72,6 @@ jobs:
           source venv/bin/activate  # Activate the virtual environment
           pip install --upgrade pip
           pip install flask
-          #pip install werkzeug
           pip install zappa
           zappa deploy dev
           #zappa deploy dev && zappa tail dev
